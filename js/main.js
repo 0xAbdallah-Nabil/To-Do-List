@@ -90,6 +90,11 @@ function storeInLocalStorage(arrayOfTasks){
 }
 // function to get the data from local storage
 function getFromLocalStorage(){
-    let tasks=JSON.parse(localStorage.getItem('tasks'));
-    return tasks;
+    if(localStorage.getItem('tasks')){
+        let tasks=JSON.parse(localStorage.getItem('tasks'));
+        return tasks;
+    }
+    else{
+        return [];
+    }
 }
