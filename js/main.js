@@ -47,22 +47,24 @@ document.addEventListener('click',(event)=>{
 // function to loop on array and create elements
 function creatElement(arrayOfTasks){
     tasks.innerHTML='';
-    arrayOfTasks.forEach(
-        (task)=>{
-            let taskDiv=document.createElement('div');
-            taskDiv.className='task';
-            taskDiv.setAttribute('data-id',task.id);
-            let taskTitle=document.createElement('span');
-            taskTitle.className='task-title';
-            taskTitle.innerHTML=task.title;
-            let del=document.createElement('span');
-            del.className='del';
-            del.innerHTML='X';
-            taskDiv.appendChild(taskTitle);
-            taskDiv.appendChild(del);
-            tasks.appendChild(taskDiv);
-        }
-    );
+    if(!arrayOfTasks.empty()){
+        arrayOfTasks.forEach(
+            (task)=>{
+                let taskDiv=document.createElement('div');
+                taskDiv.className='task';
+                taskDiv.setAttribute('data-id',task.id);
+                let taskTitle=document.createElement('span');
+                taskTitle.className='task-title';
+                taskTitle.innerHTML=task.title;
+                let del=document.createElement('span');
+                del.className='del';
+                del.innerHTML='X';
+                taskDiv.appendChild(taskTitle);
+                taskDiv.appendChild(del);
+                tasks.appendChild(taskDiv);
+            }
+        );
+    }
 }
 // delete task from the div elemnts and from the array
 function deleteTask(id){
