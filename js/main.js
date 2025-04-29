@@ -9,7 +9,7 @@ let del=document.querySelector('.del');
 let arrayOfTasks=[];
 
 // read data from local storage
-arrayOfTasks=getFromLocalStorage();
+arrayOfTasks=getFromLocalStorage() || [];
 // create elements
 creatElement(arrayOfTasks);
 
@@ -47,7 +47,7 @@ document.addEventListener('click',(event)=>{
 // function to loop on array and create elements
 function creatElement(arrayOfTasks){
     tasks.innerHTML='';
-    if(!arrayOfTasks.empty()){
+    if(arrayOfTasks.length>0){
         arrayOfTasks.forEach(
             (task)=>{
                 let taskDiv=document.createElement('div');
@@ -92,9 +92,8 @@ function storeInLocalStorage(arrayOfTasks){
 }
 // function to get the data from local storage
 function getFromLocalStorage(){
-    if(localStorage.getItem('tasks')){
-        let tasks=JSON.parse(localStorage.getItem('tasks'));
-        return tasks;
+    if(JSON.parse(localStorage.getItem('tasks'))){
+        return JSON.parse(localStorage.getItem('tasks'));
     }
     else{
         return [];
